@@ -9,6 +9,15 @@ setTimeout(function(){
     alert("For instructions click on the title ;)");
 }, 500)
 
+$("h2").click(function(){
+    if(!gameStarted){
+        
+        $(".heading h2").text("Level "+ level);
+        nextSequence();
+        gameStarted=true;
+    }
+})
+
 $(document).keypress(function(){
     if(!gameStarted){
         
@@ -23,7 +32,6 @@ function nextSequence(){
 
     level++;
     $(".heading h2").text("Level "+ level);
-    console.log(level);
 
     var randomNumber = Math.floor(Math.random()*4);
     var randomChosenColour = buttonColours[randomNumber];
@@ -84,7 +92,7 @@ function checkAnswer(currentLevel){
 
 function startOver(){
     level = 0;
-    gameStarted = 0;
+    gameStarted = false;
     gamePattern= [];
 }
 
